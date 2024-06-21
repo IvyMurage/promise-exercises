@@ -10,8 +10,6 @@ const fetchUserTodos = async () => {
     promise.json()
   );
   const [users, todos] = await Promise.all(jsonresponses);
-  console.log(users);
-  console.log(todos);
   return users.map((user) => {
     return {
       ...user,

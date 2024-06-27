@@ -3,7 +3,6 @@ function tick() {
   let countInterval = setInterval(() => {
     count++;
     console.log("tick");
-
     if (count === 5) {
       clearInterval(countInterval);
       console.log("After Cancel", countInterval);

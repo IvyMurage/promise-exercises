@@ -15,7 +15,7 @@ async function fetchWithExponentialBackoff(
       );
     }
   } catch (error) {
-    currentRetry++;
+    ~currentRetry++;
     if (currentRetry <= retries) {
       const nextDelay = delay * 2;
       console.log(

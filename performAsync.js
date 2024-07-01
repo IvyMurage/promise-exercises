@@ -2,10 +2,10 @@ const performFastAsync = async (apiUrl, duration) => {
   const controller = new AbortController();
   const signal = controller.signal;
   let clearTime;
-  const promise = new Promise((resolve, _) => {
+  const promise = new Promise((_, reject) => {
     clearTime = setTimeout(() => {
       controller.abort();
-      resolve([]);
+      reject("Took too long");
     }, duration);
   });
 
@@ -26,6 +26,10 @@ const performFastAsync = async (apiUrl, duration) => {
 performFastAsync(
   "https://jsonplaceholder.typicode.com/todos/1",
   1000
-).then((data) => {
-  console.log(data);
-});
+)
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
